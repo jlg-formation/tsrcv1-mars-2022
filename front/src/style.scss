@@ -1,0 +1,12 @@
+$side: 40em;
+
+svg {
+  width: $side;
+  height: $side;
+
+  .big-circle {
+    stroke: black;
+    stroke-width: 0.1em;
+    fill: transparent;
+  }
+}
