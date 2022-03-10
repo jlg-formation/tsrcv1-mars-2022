@@ -4,7 +4,7 @@ import serveIndex from "serve-index";
 import { api } from "./api";
 
 const app = express();
-const port = 3000;
+const port = process.env.MULTIPLICATION_PORT || 3000;
 const dir = "./public";
 
 app.use((req, res, next) => {
