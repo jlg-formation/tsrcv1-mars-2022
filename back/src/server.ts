@@ -5,7 +5,7 @@ import { api } from "./api";
 
 const app = express();
 const port = process.env.MULTIPLICATION_PORT || 3000;
-const dir = "./public";
+const dir = "../front/dist";
 
 app.use((req, res, next) => {
   console.log("url", req.url);

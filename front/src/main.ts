@@ -2,6 +2,8 @@ import { Command } from "./Command";
 import { Multiplication } from "./Multiplication";
 import "./style.scss";
 
+console.log = () => {};
+
 const main = () => {
   console.log("start");
   const multiplication = new Multiplication();
