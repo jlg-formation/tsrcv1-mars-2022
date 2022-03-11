@@ -1,9 +1,12 @@
+import { ExampleDecorator } from "./decorator";
+
 export interface CommandOptions {
   sampling: number;
   multiplicationCoef: number;
   showCircle: boolean;
 }
 
+@ExampleDecorator
 export class Command {
   observer: (
     sampling: number,
