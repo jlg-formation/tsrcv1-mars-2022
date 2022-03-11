@@ -2,6 +2,7 @@ import { Command } from "./Command";
 import { Multiplication } from "./Multiplication";
 import "./style.scss";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 console.log = () => {};
 
 const main = () => {

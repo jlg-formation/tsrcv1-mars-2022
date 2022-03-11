@@ -84,11 +84,17 @@ export class Multiplication {
     return { x, y };
   }
 
-  setMultiplicationCoef(m: number) {
-    this.m = m;
+  setMultiplicationCoef(m: unknown) {
+    if (typeof m === "number") {
+      this.m = m;
+    }
   }
 
-  setSampling(n: Integer) {
+  setSampling(n?: Integer) {
+    if (n === undefined) {
+      this.n = 0;
+      return;
+    }
     this.n = n;
   }
 
