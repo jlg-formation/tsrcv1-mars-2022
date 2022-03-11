@@ -7,8 +7,6 @@ const cy0 = 500;
 const r0 = 400;
 const r = "10";
 
-let q;
-
 export class Multiplication {
   m = 2;
   n = 10;
