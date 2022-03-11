@@ -6,11 +6,7 @@ const main = () => {
   console.log("start");
   const multiplication = new Multiplication();
 
-  multiplication.setSampling(45);
-  multiplication.setMultiplicationCoef(6);
-  multiplication.draw();
-
-  const command = new Command();
+  const command = new Command(12, 45);
   command.subscribe((sampling, multiplicationCoef) => {
     multiplication.setSampling(sampling);
     multiplication.setMultiplicationCoef(multiplicationCoef);
