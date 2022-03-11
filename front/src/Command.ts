@@ -1,9 +1,20 @@
+export interface CommandOptions {
+  sampling: number;
+  multiplicationCoef: number;
+}
+
 export class Command {
   observer = (sampling: number, multiplicationCoef: number) => {
     console.log("je fais rien.");
   };
 
-  constructor(private sampling = 12, private multiplicationCoef = 23) {
+  opts: CommandOptions = {
+    sampling: 23,
+    multiplicationCoef: 45,
+  };
+
+  constructor(options: Partial<CommandOptions> = {}) {
+    this.opts = { ...this.opts, ...options };
     const commandDiv = document.querySelector(".command");
     if (commandDiv === null) {
       throw new Error("bad html...");
@@ -22,13 +33,13 @@ export class Command {
     const spanSampling = commandDiv.querySelector(
       "span.sampling.value"
     ) as Element;
-    spanSampling.innerHTML = this.sampling + "";
-    inputSampling.value = this.sampling + "";
+    spanSampling.innerHTML = this.opts.sampling + "";
+    inputSampling.value = this.opts.sampling + "";
     const spanMC = commandDiv.querySelector(
       "span.multiplicationCoef.value"
     ) as Element;
-    spanMC.innerHTML = this.multiplicationCoef + "";
-    inputMultiplicationCoef.value = this.multiplicationCoef + "";
+    spanMC.innerHTML = this.opts.multiplicationCoef + "";
+    inputMultiplicationCoef.value = this.opts.multiplicationCoef + "";
 
     inputSampling.addEventListener("input", () => {
       this.observer(+inputSampling.value, +inputMultiplicationCoef.value);
@@ -42,6 +53,6 @@ export class Command {
 
   subscribe(observer: (sampling: number, multiplicationCoef: number) => void) {
     this.observer = observer;
-    this.observer(this.sampling, this.multiplicationCoef);
+    this.observer(this.opts.sampling, this.opts.multiplicationCoef);
   }
 }
