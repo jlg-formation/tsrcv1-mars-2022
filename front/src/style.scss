@@ -9,4 +9,11 @@ svg {
     stroke-width: 0.1em;
     fill: transparent;
   }
+
+  .lines {
+    line {
+      stroke: black;
+      stroke-width: 0.1em;
+    }
+  }
 }

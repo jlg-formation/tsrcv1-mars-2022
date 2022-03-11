@@ -7,6 +7,7 @@ const n = 10;
 const cx0 = 500;
 const cy0 = 500;
 const r0 = 400;
+const r = "10";
 
 const drawSmallCircles = () => {
   const group = document.querySelector("svg g.small-circle");
@@ -17,7 +18,7 @@ const drawSmallCircles = () => {
     const angle = (i * (2 * Math.PI)) / n;
     const x = cx0 + r0 * Math.cos(angle);
     const y = cy0 + r0 * Math.sin(angle);
-    const r = "10";
+
     circle.setAttributeNS(null, "cx", x + "");
     circle.setAttributeNS(null, "cy", y + "");
     circle.setAttributeNS(null, "r", r);
