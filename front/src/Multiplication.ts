@@ -7,10 +7,15 @@ const cy0 = 500;
 const r0 = 400;
 const r = "10";
 
+export enum CircleEnum {
+  VISIBLE,
+  HIDDEN,
+}
+
 export class Multiplication {
   m = 2;
   n = 10;
-  showCircle = false;
+  showCircle: CircleEnum = CircleEnum.HIDDEN;
 
   clean() {
     const lineGroup = document.querySelector("svg g.lines") as Element;
@@ -23,7 +28,7 @@ export class Multiplication {
 
   draw(): void {
     this.clean();
-    if (this.showCircle) {
+    if (this.showCircle === CircleEnum.VISIBLE) {
       this.drawSmallCircles();
     }
     this.drawLines();
@@ -86,6 +91,10 @@ export class Multiplication {
   }
 
   setShowCircle(showCircle: boolean) {
-    this.showCircle = showCircle;
+    if (showCircle) {
+      this.showCircle = CircleEnum.VISIBLE;
+    } else {
+      this.showCircle = CircleEnum.HIDDEN;
+    }
   }
 }
