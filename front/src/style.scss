@@ -23,7 +23,7 @@ h1 {
 }
 
 div.command {
-  input {
+  input[type="range"] {
     width: 100%;
   }
 }

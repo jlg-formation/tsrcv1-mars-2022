@@ -10,12 +10,8 @@ const r = "10";
 export class Multiplication {
   m = 2;
   n = 10;
+  showCircle = false;
 
-  draw(): void {
-    this.clean();
-    this.drawSmallCircles();
-    this.drawLines();
-  }
   clean() {
     const lineGroup = document.querySelector("svg g.lines") as Element;
     lineGroup.innerHTML = "";
@@ -23,6 +19,14 @@ export class Multiplication {
       "svg g.small-circles"
     ) as Element;
     cirlceGroup.innerHTML = "";
+  }
+
+  draw(): void {
+    this.clean();
+    if (this.showCircle) {
+      this.drawSmallCircles();
+    }
+    this.drawLines();
   }
 
   drawLine(start: number, end: number): void {
@@ -79,5 +83,9 @@ export class Multiplication {
 
   setSampling(n: number) {
     this.n = n;
+  }
+
+  setShowCircle(showCircle: boolean) {
+    this.showCircle = showCircle;
   }
 }

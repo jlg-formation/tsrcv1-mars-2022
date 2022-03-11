@@ -1,16 +1,22 @@
 export interface CommandOptions {
   sampling: number;
   multiplicationCoef: number;
+  showCircle: boolean;
 }
 
 export class Command {
-  observer = (sampling: number, multiplicationCoef: number) => {
+  observer: (
+    sampling: number,
+    multiplicationCoef: number,
+    showCircle: boolean
+  ) => void = () => {
     console.log("je fais rien.");
   };
 
   opts: CommandOptions = {
     sampling: 23,
     multiplicationCoef: 45,
+    showCircle: true,
   };
 
   constructor(options: Partial<CommandOptions> = {}) {
@@ -19,6 +25,15 @@ export class Command {
     if (commandDiv === null) {
       throw new Error("bad html...");
     }
+
+    const inputShowCircle = commandDiv.querySelector(
+      "input[name='showCircle']"
+    );
+    if (!(inputShowCircle instanceof HTMLInputElement)) {
+      throw new Error("not an input element");
+    }
+    inputShowCircle.checked = this.opts.showCircle;
+
     const inputSampling = commandDiv.querySelector("input[name='sampling']");
     if (!(inputSampling instanceof HTMLInputElement)) {
       throw new Error("not an input element");
@@ -42,17 +57,42 @@ export class Command {
     inputMultiplicationCoef.value = this.opts.multiplicationCoef + "";
 
     inputSampling.addEventListener("input", () => {
-      this.observer(+inputSampling.value, +inputMultiplicationCoef.value);
+      this.observer(
+        +inputSampling.value,
+        +inputMultiplicationCoef.value,
+        inputShowCircle.checked
+      );
       spanSampling.innerHTML = inputSampling.value;
     });
     inputMultiplicationCoef.addEventListener("input", () => {
-      this.observer(+inputSampling.value, +inputMultiplicationCoef.value);
+      this.observer(
+        +inputSampling.value,
+        +inputMultiplicationCoef.value,
+        inputShowCircle.checked
+      );
       spanMC.innerHTML = inputMultiplicationCoef.value;
+    });
+    inputShowCircle.addEventListener("input", () => {
+      this.observer(
+        +inputSampling.value,
+        +inputMultiplicationCoef.value,
+        inputShowCircle.checked
+      );
     });
   }
 
-  subscribe(observer: (sampling: number, multiplicationCoef: number) => void) {
+  subscribe(
+    observer: (
+      sampling: number,
+      multiplicationCoef: number,
+      showCircle: boolean
+    ) => void
+  ) {
     this.observer = observer;
-    this.observer(this.opts.sampling, this.opts.multiplicationCoef);
+    this.observer(
+      this.opts.sampling,
+      this.opts.multiplicationCoef,
+      this.opts.showCircle
+    );
   }
 }

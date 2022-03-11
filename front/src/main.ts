@@ -10,9 +10,10 @@ const main = () => {
 
   const command = new Command({ sampling: 12 });
   console.log("command: ", command);
-  command.subscribe((sampling, multiplicationCoef) => {
+  command.subscribe((sampling, multiplicationCoef, showCircle) => {
     multiplication.setSampling(sampling);
     multiplication.setMultiplicationCoef(multiplicationCoef);
+    multiplication.setShowCircle(showCircle);
     multiplication.draw();
   });
 };
