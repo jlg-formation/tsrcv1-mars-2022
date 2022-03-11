@@ -12,8 +12,17 @@ export class Multiplication {
   n = 10;
 
   draw(): void {
+    this.clean();
     this.drawSmallCircles();
     this.drawLines();
+  }
+  clean() {
+    const lineGroup = document.querySelector("svg g.lines") as Element;
+    lineGroup.innerHTML = "";
+    const cirlceGroup = document.querySelector(
+      "svg g.small-circles"
+    ) as Element;
+    cirlceGroup.innerHTML = "";
   }
 
   drawLine(start: number, end: number): void {
