@@ -14,37 +14,6 @@ export class Multiplication {
     this.drawLines();
   }
 
-  setM(m: number) {
-    this.m = m;
-  }
-
-  setN(n: number) {
-    this.n = n;
-  }
-
-  getPoint(pointId: number) {
-    const angle = (pointId * (2 * Math.PI)) / this.n;
-    const x = cx0 + r0 * Math.cos(angle);
-    const y = cy0 + r0 * Math.sin(angle);
-
-    return { x, y };
-  }
-
-  drawSmallCircles() {
-    const group = document.querySelector("svg g.small-circles");
-
-    for (let i = 0; i < this.n; i++) {
-      console.log("i: ", i);
-      const circle = document.createElementNS(svgns, "circle");
-      const { x, y } = this.getPoint(i);
-
-      circle.setAttributeNS(null, "cx", x + "");
-      circle.setAttributeNS(null, "cy", y + "");
-      circle.setAttributeNS(null, "r", r);
-      group.appendChild(circle);
-    }
-  }
-
   drawLine(start: number, end: number) {
     const { x: x1, y: y1 } = this.getPoint(start);
     const { x: x2, y: y2 } = this.getPoint(end);
@@ -65,5 +34,36 @@ export class Multiplication {
     for (let i = 0; i < this.n; i++) {
       this.drawLine(i, i * this.m);
     }
+  }
+
+  drawSmallCircles() {
+    const group = document.querySelector("svg g.small-circles");
+
+    for (let i = 0; i < this.n; i++) {
+      console.log("i: ", i);
+      const circle = document.createElementNS(svgns, "circle");
+      const { x, y } = this.getPoint(i);
+
+      circle.setAttributeNS(null, "cx", x + "");
+      circle.setAttributeNS(null, "cy", y + "");
+      circle.setAttributeNS(null, "r", r);
+      group.appendChild(circle);
+    }
+  }
+
+  getPoint(pointId: number) {
+    const angle = (pointId * (2 * Math.PI)) / this.n;
+    const x = cx0 + r0 * Math.cos(angle);
+    const y = cy0 + r0 * Math.sin(angle);
+
+    return { x, y };
+  }
+
+  setM(m: number) {
+    this.m = m;
+  }
+
+  setN(n: number) {
+    this.n = n;
   }
 }
