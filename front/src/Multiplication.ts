@@ -12,10 +12,12 @@ export enum CircleEnum {
   HIDDEN,
 }
 
+type Integer = number;
+
 export class Multiplication {
   m = 2;
-  n = 10;
-  showCircle: CircleEnum = CircleEnum.HIDDEN;
+  n: Integer = 10;
+  showCircle = CircleEnum.HIDDEN;
 
   clean() {
     const lineGroup = document.querySelector("svg g.lines") as Element;
@@ -34,7 +36,7 @@ export class Multiplication {
     this.drawLines();
   }
 
-  drawLine(start: number, end: number): void {
+  drawLine(start: Integer, end: Integer): void {
     const { x: x1, y: y1 } = this.getPoint(start);
     const { x: x2, y: y2 } = this.getPoint(end);
 
@@ -74,7 +76,7 @@ export class Multiplication {
     }
   }
 
-  getPoint(pointId: number): Point {
+  getPoint(pointId: Integer): Point {
     const angle = (pointId * (2 * Math.PI)) / this.n;
     const x = cx0 + r0 * Math.cos(angle);
     const y = cy0 + r0 * Math.sin(angle);
@@ -86,7 +88,7 @@ export class Multiplication {
     this.m = m;
   }
 
-  setSampling(n: number) {
+  setSampling(n: Integer) {
     this.n = n;
   }
 
