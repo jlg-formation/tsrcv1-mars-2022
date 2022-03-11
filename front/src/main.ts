@@ -5,8 +5,8 @@ const main = () => {
   console.log("start");
   const multiplication = new Multiplication();
 
-  multiplication.setN(45);
-  multiplication.setM(6);
+  multiplication.setSampling(45);
+  multiplication.setMultiplicationCoef(6);
   multiplication.draw();
 };
 

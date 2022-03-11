@@ -1,3 +1,5 @@
+import { Point } from "./Point";
+
 const svgns = "http://www.w3.org/2000/svg";
 
 const cx0 = 500;
@@ -56,7 +58,7 @@ export class Multiplication {
     }
   }
 
-  getPoint(pointId: number) {
+  getPoint(pointId: number): Point {
     const angle = (pointId * (2 * Math.PI)) / this.n;
     const x = cx0 + r0 * Math.cos(angle);
     const y = cy0 + r0 * Math.sin(angle);
@@ -64,11 +66,11 @@ export class Multiplication {
     return { x, y };
   }
 
-  setM(m: number) {
+  setMultiplicationCoef(m: number) {
     this.m = m;
   }
 
-  setN(n: number) {
+  setSampling(n: number) {
     this.n = n;
   }
 }
