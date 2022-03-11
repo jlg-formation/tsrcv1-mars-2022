@@ -5,20 +5,25 @@ const cy0 = 500;
 const r0 = 400;
 const r = "10";
 
-export class Multiplication {
-  m: number;
-  n: number;
+let q;
 
-  draw() {
+export class Multiplication {
+  m = 2;
+  n = 10;
+
+  draw(): void {
     this.drawSmallCircles();
     this.drawLines();
   }
 
-  drawLine(start: number, end: number) {
+  drawLine(start: number, end: number): void {
     const { x: x1, y: y1 } = this.getPoint(start);
     const { x: x2, y: y2 } = this.getPoint(end);
 
     const group = document.querySelector("svg g.lines");
+    if (group === null) {
+      throw new Error("cannot find group of lines");
+    }
 
     const line = document.createElementNS(svgns, "line");
 
@@ -37,7 +42,7 @@ export class Multiplication {
   }
 
   drawSmallCircles() {
-    const group = document.querySelector("svg g.small-circles");
+    const group = document.querySelector("svg g.small-circles") as Element;
 
     for (let i = 0; i < this.n; i++) {
       console.log("i: ", i);
